@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">PluuBasicLib</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="MANIFEST_ACTIVITY_INTENT_CATEGORY_NAME">PLUU_SAMPLE_CODE</string>
+
+
+    <string name="title_activity_app_info">Pluu/Application Info</string>
+
+    <string name="settings_safetylegal_activity_loading">Loading</string>
+    <string name="action_third_party">Third party</string>
+    <string name="action_all">All</string>
+
+</resources>
