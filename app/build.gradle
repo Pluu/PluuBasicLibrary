@@ -20,5 +20,6 @@ android {
 }
 
 dependencies {
+    compile 'com.intellij:annotations:+@jar'
     compile fileTree(dir: 'libs', include: ['*.jar'])
 }

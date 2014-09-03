@@ -24,6 +24,8 @@ import com.pluu.pluubasiclibrary.extra.ViewHolderHelper;
 import com.pluu.pluubasiclibrary.pluu.item.AppInfo;
 import com.pluu.pluubasiclibrary.pluu.item.AppInfo.AppFilter;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -41,6 +43,9 @@ public class AppInfoActivity extends Activity {
 
     private PackageManager pm = null;
 
+    private final String EXTRA_TAG_FIRST_VISIBLE_POSITION = "extra_tag_first_visible_position";
+    private final String EXTRA_TAG_VISIBLE_OFFSET = "extra_tag_visible_offset";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,11 +56,6 @@ public class AppInfoActivity extends Activity {
 
         mAdapter = new IAAdapter(this);
         mListView.setAdapter(mAdapter);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
 
         // Task Start
         startTask();
@@ -79,15 +79,12 @@ public class AppInfoActivity extends Activity {
      * @author nohhs
      */
     private class IAAdapter extends BaseAdapter {
-        private Context mContext = null;
-
         private List<ApplicationInfo> mAppList = null;
         private ArrayList<AppInfo> mListData = new ArrayList<AppInfo>();
         private LayoutInflater inflater;
 
         public IAAdapter(Context mContext) {
             super();
-            this.mContext = mContext;
             inflater = (LayoutInflater) mContext
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         }
@@ -160,8 +157,8 @@ public class AppInfoActivity extends Activity {
             // Reset
             mListData.clear();
 
-            AppInfo addInfo = null;
-            ApplicationInfo appInfo = null;
+            AppInfo addInfo;
+            ApplicationInfo appInfo;
 
             PackageInfo packageInfo;
 
@@ -218,9 +215,28 @@ public class AppInfoActivity extends Activity {
             mAdapter.notifyDataSetChanged();
             setLoadingView(false);
         }
+    }
 
-    };
+    @Override
+    protected void onSaveInstanceState(@NotNull Bundle outState) {
+        super.onSaveInstanceState(outState);
 
+        View childAt = mListView.getChildAt(0);
+        int top = (childAt == null) ? 0 : childAt.getTop();
+
+        outState.putInt(EXTRA_TAG_FIRST_VISIBLE_POSITION, mListView.getFirstVisiblePosition());
+        outState.putInt(EXTRA_TAG_VISIBLE_OFFSET, top);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NotNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        int position = savedInstanceState.getInt(EXTRA_TAG_FIRST_VISIBLE_POSITION, 0);
+        int top = savedInstanceState.getInt(EXTRA_TAG_VISIBLE_OFFSET, 0);
+
+        mListView.setSelectionFromTop(position, top);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -242,4 +258,5 @@ public class AppInfoActivity extends Activity {
 
         return true;
     }
+
 }
