@@ -7,21 +7,23 @@
 > （アップデートは非定期的に管理者の気まぐれで行われます。アップデートはよく使われるライブラリ、カスタムライブラリ、Commonクラスがメインです。）
 
 ##Lasted Update 1.0.0
-** Pluu - Application List **
-* Application List View
-* all / thirdpary
-* Application Iconn, Name, Pacakage Infomation
-* Version Name, Code
+
+ **Pluu - Application List**
+ * Application List View
+ * all / thirdpary
+ * Application Iconn, Name, Pacakage Infomation
+ * Version Name, Code
 
 ##Next Task??
-** Network **
+
+**Network**
 * Volley, Custom Volley Request
 
-** Image **
+**Image**
 * Picasso Transformation
 * Image Mask Builder
 
-** Etc **
+**Etc**
 * Annotation
 
 
