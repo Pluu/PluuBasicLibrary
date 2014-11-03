@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_vlinear"
+        android:showAsAction="never"
+        android:title="Vertical LinearLayout" />
+    <item
+        android:id="@+id/menu_hlinear"
+        android:showAsAction="never"
+        android:title="Horizontal LinearLayout" />
+
+    <item
+        android:id="@+id/menu_grid"
+        android:showAsAction="never"
+        android:title="GridLayout" />
+
+    <item
+        android:id="@+id/menu_staggeredgridlayout"
+        android:showAsAction="never"
+        android:title="StaggeredGridLayout" />
+
+</menu>
