@@ -15,6 +15,7 @@ import com.pluu.pluubasiclibrary.android.adapter.item.DateModel;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * RecyclerViewActivity
@@ -40,10 +41,23 @@ public class RecyclerViewActivity extends Activity {
     private void initValue() {
         List<DateModel> list = new ArrayList<>();
         DateModel item;
+
+        Random r = new Random(System.currentTimeMillis());
+        StringBuffer strBuffer = new StringBuffer();
+
         for (int i = 0; i < 20; i++) {
             item = new DateModel();
             item.text1 = "Text1_" + i;
-            item.text2 = "Text2_" + i;
+
+            strBuffer.setLength(0);
+
+            strBuffer.append("TextData=");
+            int size = r.nextInt(10);
+            for (int j = 0; j < size; j++) {
+                strBuffer.append(",Text2_" + j);
+            }
+            item.text2 = strBuffer.toString();
+
             list.add(item);
         }
 
