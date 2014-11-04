@@ -10,9 +10,21 @@
 
  * force overflow menu on actionbar
 
-##Lasted Update 1.0.2
+##Update 1.0.2
 
  * RecyclerView Sample Add
+
+######LinearLayoutManager(Vertical Mode)
+![PluuBasicLibrary](/screenshots/RecyclerView_VLinear.png)
+
+######LinearLayoutManager(HORIZONTAL Mode)
+![PluuBasicLibrary](/screenshots/RecyclerView_HLinear.png)
+
+######GridLayoutManager
+![PluuBasicLibrary](/screenshots/RecyclerView_Grid.png)
+
+######StaggeredGridLayoutManager
+![PluuBasicLibrary](/screenshots/RecyclerView_StaggeredGrid.png)
 
 ##Update 1.0.1
 
@@ -25,6 +37,8 @@
  * all / thirdpary
  * Application Iconn, Name, Pacakage Infomation
  * Version Name, Code
+  
+![PluuBasicLibrary](/screenshots/AppInfo.png)
 
 ##Next Task??
 
