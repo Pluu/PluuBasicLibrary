@@ -14,6 +14,6 @@
     <string name="action_all">All</string>
 
     <!-- RecycleView -->
-    <string name="title_activity_recycle_view">Android/RecycleView</string>
+    <string name="title_activity_recycler_view">Android/RecyclerView</string>
 
 </resources>

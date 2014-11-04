@@ -21,17 +21,15 @@
             android:label="@string/title_activity_app_info">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="PLUU_SAMPLE_CODE" />
             </intent-filter>
         </activity>
         <activity
             android:name=".android.RecyclerViewActivity"
             android:configChanges="orientation|screenSize"
-            android:label="@string/title_activity_recycle_view">
+            android:label="@string/title_activity_recycler_view">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="PLUU_SAMPLE_CODE" />
             </intent-filter>
         </activity>
