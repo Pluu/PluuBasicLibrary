@@ -30,6 +30,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Application Info Activity
+ * Created by Administrator on 2014-09-02.
+ */
 public class AppInfoActivity extends Activity {
     private static final String TAG = AppInfoActivity.class.getSimpleName();
 

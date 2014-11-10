@@ -1,0 +1,44 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@android:color/white"
+    android:layout_height="match_parent"
+    tools:context="com.pluu.pluubasiclibrary.pluu.CardViewBuilderActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/bgLayout"
+            android:layout_width="100dp"
+            android:layout_height="100dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Default" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/bgLayout2"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/bgLayout"
+            android:layout_width="100dp"
+            android:layout_height="100dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Custom" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+</RelativeLayout>
