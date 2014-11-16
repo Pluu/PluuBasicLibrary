@@ -6,7 +6,14 @@
 > 업데이트는 비정기적으로 관리자 마음대로 이루어집니다. 업데이트 분야는 자주 사용한 라이브러리, 커스텀 라이브러리, Common Class을 주작업입니다.
 > （アップデートは非定期的に管理者の気まぐれで行われます。アップデートはよく使われるライブラリ、カスタムライブラリ、Commonクラスがメインです。）
 
-##Lasted Update 1.0.3
+##Lasted Update 1.0.4
+
+ * CardView Builder Add
+
+![PluuBasicLibrary](/screenshots/cardview.png)
+![PluuBasicLibrary](/screenshots/cardview1.png)
+
+##Update 1.0.3
 
  * force overflow menu on actionbar
 
