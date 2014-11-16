@@ -15,33 +15,62 @@ import com.pluu.pluubasiclibrary.pluu.builder.CardViewBuilder;
  */
 public class CardViewBuilderActivity extends Activity {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_card_view_builder);
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_card_view_builder);
 
-        initView();
-    }
+		initView();
+	}
 
-    private void initView() {
-        // Default
-        View view = findViewById(R.id.bgLayout);
-        CardViewBuilder
-            .with(this)
-            .into(view);
+	private void initView() {
+		// Default
+		View view = findViewById(R.id.bgLayout);
+		CardViewBuilder
+			.with(this)
+			.into(view);
 
-        // Custom
-        View custom = findViewById(R.id.bgLayout2);
-        CardAttribute attribute = new CardAttribute(this);
-        attribute.setBgColor(Color.parseColor("#2196f3"));
-        attribute.setShadowBgColor(Color.parseColor("#e3f2fd"));
-        attribute.setShadowBgColorWidth(10);
-        attribute.setRadius(10);
+		// Default Selector
+		view = findViewById(R.id.bgLayout2);
+		CardAttribute attribute = new CardAttribute(this);
+		attribute.setSelector(true);
+		CardViewBuilder
+			.with(this)
+			.setAttribute(attribute)
+			.into(view);
 
-        CardViewBuilder
-            .with(this)
-            .setAttribute(attribute)
-            .into(custom);
-    }
+
+		int customBgColor = Color.parseColor("#CC83CC39");
+		int customShadowColor = Color.parseColor("#e3f2fd");
+		int customSelectColor = Color.parseColor("#83CC39");
+
+		// Custom
+		view = findViewById(R.id.bgLayout3);
+		attribute = new CardAttribute(this);
+		attribute.setBgColor(customBgColor);
+		attribute.setShadowColor(customShadowColor);
+		attribute.setShadowBgColorWidth(4);
+		attribute.setRadius(10);
+
+		CardViewBuilder
+			.with(this)
+			.setAttribute(attribute)
+			.into(view);
+
+		// Custom Selector
+		view = findViewById(R.id.bgLayout4);
+		attribute = new CardAttribute(this);
+		attribute.setBgColor(customBgColor);
+		attribute.setShadowColor(customShadowColor);
+		attribute.setShadowBgColorWidth(4);
+		attribute.setRadius(10);
+		attribute.setSelector(true);
+		attribute.setSelectorColor(customSelectColor);
+
+		CardViewBuilder
+			.with(this)
+			.setAttribute(attribute)
+			.into(view);
+	}
 
 }
