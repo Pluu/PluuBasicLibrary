@@ -208,7 +208,7 @@ public class NavigationDrawerFragment extends Fragment
 		}
 
 		mDrawerListView.setAdapter(new SimpleAdapter(getActivity(), getData(path),
-			android.R.layout.simple_list_item_1, new String[]{"title"},
+			R.layout.layout_activity_list_item, new String[]{"title"},
 			new int[]{android.R.id.text1}));
 		mDrawerListView.setTextFilterEnabled(true);
 		mDrawerListView.setOnItemClickListener(this);
@@ -256,10 +256,12 @@ public class NavigationDrawerFragment extends Fragment
 				String nextLabel = prefixPath == null ? labelPath[0] : labelPath[prefixPath.length];
 
 				if ((prefixPath != null ? prefixPath.length : 0) == labelPath.length - 1) {
-					addItem(myData, nextLabel, null);
+					addItem(myData, nextLabel, activityIntent(
+						info.activityInfo.applicationInfo.packageName,
+						info.activityInfo.name));
 				} else {
 					if (entries.get(nextLabel) == null) {
-						addItem(myData, nextLabel, null);
+						addItem(myData, nextLabel, browseIntent(prefix.equals("") ? nextLabel : prefix + "/" + nextLabel));
 						entries.put(nextLabel, true);
 					}
 				}
@@ -280,26 +282,39 @@ public class NavigationDrawerFragment extends Fragment
 			}
 		};
 
+	protected Intent activityIntent(String pkg, String componentName) {
+		Intent result = new Intent();
+		result.setClassName(pkg, componentName);
+		result.putExtra("end", true);
+		return result;
+	}
+
+	protected Intent browseIntent(String path) {
+		Intent result = new Intent();
+		result.putExtra("end", false);
+		return result;
+	}
+
 	protected void addItem(List<Map<String, Object>> data, String name, Intent intent) {
 		Map<String, Object> temp = new HashMap<String, Object>();
 		temp.put("title", name);
-//		temp.put("intent", intent);
+		temp.put("intent", intent);
 		data.add(temp);
-	}
-
-	@SuppressWarnings("unchecked")
-	protected void onListItemClick(ListView l, View v, int position, long id) {
-		Map<String, Object> map = (Map<String, Object>)l.getItemAtPosition(position);
-
-		Intent intent = (Intent) map.get("intent");
-		startActivity(intent);
 	}
 
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 		Map<String, Object> map = (Map<String, Object>)parent.getItemAtPosition(position);
-		String path = (String) map.get("title");
-		updateListView(path);
+
+		Intent intent = (Intent) map.get("intent");
+		Bundle extras = intent.getExtras();
+
+		if (extras.containsKey("end") && extras.getBoolean("end")) {
+
+		} else {
+			String path = (String) map.get("title");
+			updateListView(path);
+		}
 	}
 
 }
