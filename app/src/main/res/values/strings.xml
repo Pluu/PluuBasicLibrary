@@ -16,5 +16,6 @@
     <!-- RecycleView -->
     <string name="title_activity_recycler_view">Android/RecyclerView</string>
     <string name="title_activity_card_view_builder">Pluu/CardView Builder</string>
+    <string name="title_activity_material_main">MaterialMainActivity</string>
 
 </resources>
