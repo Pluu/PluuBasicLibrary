@@ -2,18 +2,22 @@ package com.pluu.pluubasiclibrary.pluu;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -34,7 +38,7 @@ import java.util.List;
  * Application Info Activity
  * Created by Administrator on 2014-09-02.
  */
-public class AppInfoActivity extends Activity {
+public class AppInfoActivity extends Activity implements AdapterView.OnItemClickListener {
     private static final String TAG = AppInfoActivity.class.getSimpleName();
 
     private View mLoadingContainer;
@@ -50,6 +54,8 @@ public class AppInfoActivity extends Activity {
     private final String EXTRA_TAG_FIRST_VISIBLE_POSITION = "extra_tag_first_visible_position";
     private final String EXTRA_TAG_VISIBLE_OFFSET = "extra_tag_visible_offset";
 
+    private final int REQUEST_UNINSTALL_CODE = 1000;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +66,7 @@ public class AppInfoActivity extends Activity {
 
         mAdapter = new IAAdapter(this);
         mListView.setAdapter(mAdapter);
+        mListView.setOnItemClickListener(this);
 
         // Task Start
         startTask();
@@ -76,6 +83,24 @@ public class AppInfoActivity extends Activity {
     private void setLoadingView(boolean isView) {
         mLoadingContainer.setVisibility(isView ? View.VISIBLE : View.GONE);
         mListView.setVisibility(isView ? View.GONE : View.VISIBLE);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        AppInfo item = mAdapter.getItem(position);
+        Uri packageUri = Uri.parse("package:" + item.mAppPackge);
+        Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, packageUri);
+        startActivityForResult(intent, REQUEST_UNINSTALL_CODE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode != RESULT_OK) {
+            return;
+        }
+
+        startTask();
     }
 
     /**
@@ -97,12 +122,12 @@ public class AppInfoActivity extends Activity {
             return mListData.size();
         }
 
-        public Object getItem(int arg0) {
-            return null;
+        public AppInfo getItem(int position) {
+            return mListData.get(position);
         }
 
-        public long getItemId(int arg0) {
-            return 0;
+        public long getItemId(int position) {
+            return position;
         }
 
         public View getView(int position, View convertView, ViewGroup parent) {
@@ -217,6 +242,7 @@ public class AppInfoActivity extends Activity {
         @Override
         protected void onPostExecute(Void result) {
             mAdapter.notifyDataSetChanged();
+            mListView.smoothScrollToPositionFromTop(0, 0, 0);
             setLoadingView(false);
         }
     }
