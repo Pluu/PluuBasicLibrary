@@ -230,12 +230,27 @@ public class NavigationDrawerFragment extends Fragment
 
 		String[] prefixPath;
 		String prefixWithSlash = prefix;
+		Map<String, Object> backData = null;
 
 		if (prefix.equals("")) {
 			prefixPath = null;
 		} else {
 			prefixPath = prefix.split("/");
 			prefixWithSlash = prefix + "/";
+
+			int backOffset = prefix.lastIndexOf("/");
+			String backTitle;
+
+			if (backOffset < 0) {
+				backTitle = "";
+			} else {
+				backTitle = prefix.substring(0, backOffset);
+			}
+
+			backData = new HashMap<String, Object>();
+			backData.put("title", "");
+			backData.put("backTitle", backTitle);
+			myData.add(backData);
 		}
 
 		int len = list.size();
@@ -270,6 +285,10 @@ public class NavigationDrawerFragment extends Fragment
 
 		Collections.sort(myData, sDisplayNameComparator);
 
+		if (backData != null) {
+			backData.put("title", "← Back");
+		}
+
 		return myData;
 	}
 
@@ -285,13 +304,12 @@ public class NavigationDrawerFragment extends Fragment
 	protected Intent activityIntent(String pkg, String componentName) {
 		Intent result = new Intent();
 		result.setClassName(pkg, componentName);
-		result.putExtra("end", true);
 		return result;
 	}
 
 	protected Intent browseIntent(String path) {
 		Intent result = new Intent();
-		result.putExtra("end", false);
+		result.putExtra("title", path);
 		return result;
 	}
 
@@ -306,13 +324,19 @@ public class NavigationDrawerFragment extends Fragment
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 		Map<String, Object> map = (Map<String, Object>)parent.getItemAtPosition(position);
 
-		Intent intent = (Intent) map.get("intent");
-		Bundle extras = intent.getExtras();
-
-		if (extras.containsKey("end") && extras.getBoolean("end")) {
-
+		String path = null;
+		if (map.containsKey("backTitle")) {
+			path = (String) map.get("backTitle");
 		} else {
-			String path = (String) map.get("title");
+			Intent intent = (Intent) map.get("intent");
+			if (intent.hasExtra("title")) {
+				path = intent.getStringExtra("title");
+			} else {
+				startActivity(intent);
+			}
+		}
+
+		if (path != null) {
 			updateListView(path);
 		}
 	}
