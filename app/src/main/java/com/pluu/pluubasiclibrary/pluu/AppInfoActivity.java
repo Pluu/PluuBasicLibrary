@@ -1,19 +1,23 @@
 package com.pluu.pluubasiclibrary.pluu;
 
-import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -30,237 +34,270 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+import butterknife.OnItemClick;
+
 /**
  * Application Info Activity
  * Created by Administrator on 2014-09-02.
  */
-public class AppInfoActivity extends Activity {
-    private static final String TAG = AppInfoActivity.class.getSimpleName();
+public class AppInfoActivity extends ActionBarActivity {
+	private static final String TAG = AppInfoActivity.class.getSimpleName();
 
-    private View mLoadingContainer;
-    private ListView mListView = null;
-    private IAAdapter mAdapter = null;
+	@InjectView(R.id.loading_container)
+	View mLoadingContainer;
+	@InjectView(R.id.listView1)
+	ListView mListView;
+	private IAAdapter mAdapter = null;
 
-    private final int MENU_THIRD_PARTY = 0;
-    private final int MENU_ALL = 1;
-    private int MENU_MODE = MENU_THIRD_PARTY;
+	@InjectView(R.id.toolbar)
+	Toolbar toolbar;
 
-    private PackageManager pm = null;
+	private final int MENU_THIRD_PARTY = 0;
+	private final int MENU_ALL = 1;
+	private int MENU_MODE = MENU_THIRD_PARTY;
 
-    private final String EXTRA_TAG_FIRST_VISIBLE_POSITION = "extra_tag_first_visible_position";
-    private final String EXTRA_TAG_VISIBLE_OFFSET = "extra_tag_visible_offset";
+	private PackageManager pm = null;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_app_info);
+	private final String EXTRA_TAG_FIRST_VISIBLE_POSITION = "extra_tag_first_visible_position";
+	private final String EXTRA_TAG_VISIBLE_OFFSET = "extra_tag_visible_offset";
 
-        mLoadingContainer = findViewById(R.id.loading_container);
-        mListView = (ListView) findViewById(R.id.listView1);
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_app_info);
+		ButterKnife.inject(this);
 
-        mAdapter = new IAAdapter(this);
-        mListView.setAdapter(mAdapter);
+		initToolBar();
 
-        // Task Start
-        startTask();
-    }
+		mLoadingContainer = findViewById(R.id.loading_container);
+		mListView = (ListView) findViewById(R.id.listView1);
 
-    private void startTask() {
-        new AppTask().execute();
-    }
+		mAdapter = new IAAdapter(this);
+		mListView.setAdapter(mAdapter);
 
-    /**
-     * Loading View Setting
-     * @param isView true/false
-     */
-    private void setLoadingView(boolean isView) {
-        mLoadingContainer.setVisibility(isView ? View.VISIBLE : View.GONE);
-        mListView.setVisibility(isView ? View.GONE : View.VISIBLE);
-    }
+		// Task Start
+		startTask();
+	}
 
-    /**
-     * List Adapter
-     * @author nohhs
-     */
-    private class IAAdapter extends BaseAdapter {
-        private List<ApplicationInfo> mAppList = null;
-        private ArrayList<AppInfo> mListData = new ArrayList<AppInfo>();
-        private LayoutInflater inflater;
+	private void initToolBar() {
+		setSupportActionBar(toolbar);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+	}
 
-        public IAAdapter(Context mContext) {
-            super();
-            inflater = (LayoutInflater) mContext
-                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        }
+	private void startTask() {
+		new AppTask().execute();
+	}
 
-        public int getCount() {
-            return mListData.size();
-        }
+	/**
+	 * Loading View Setting
+	 *
+	 * @param isView true/false
+	 */
+	private void setLoadingView(boolean isView) {
+		mLoadingContainer.setVisibility(isView ? View.VISIBLE : View.GONE);
+		mListView.setVisibility(isView ? View.GONE : View.VISIBLE);
+	}
 
-        public Object getItem(int arg0) {
-            return null;
-        }
+	/**
+	 * List Adapter
+	 *
+	 * @author nohhs
+	 */
+	private class IAAdapter extends BaseAdapter {
+		private List<ApplicationInfo> mAppList = null;
+		private ArrayList<AppInfo> mListData = new ArrayList<>();
+		private LayoutInflater inflater;
 
-        public long getItemId(int arg0) {
-            return 0;
-        }
+		public IAAdapter(Context mContext) {
+			super();
+			inflater = LayoutInflater.from(mContext);
+		}
 
-        public View getView(int position, View convertView, ViewGroup parent) {
-            if (convertView == null) {
-                convertView = inflater.inflate(R.layout.manage_applications_item, null);
-            }
+		public int getCount() {
+			return mListData.size();
+		}
 
-            AppInfo data = mListData.get(position);
+		public AppInfo getItem(int position) {
+			return mListData.get(position);
+		}
 
-            ImageView icon = ViewHolderHelper.get(convertView, R.id.app_icon);
-            TextView appName = ViewHolderHelper.get(convertView, R.id.app_name);
-            TextView packageName = ViewHolderHelper.get(convertView, R.id.app_package);
-            TextView version = ViewHolderHelper.get(convertView, R.id.app_version);
+		public long getItemId(int position) {
+			return position;
+		}
 
-            if (data.mIcon != null) {
-                icon.setImageDrawable(data.mIcon);
-            }
+		public View getView(int position, View convertView, ViewGroup parent) {
+			if (convertView == null) {
+				convertView = inflater.inflate(R.layout.manage_applications_item, null);
+			}
 
-            appName.setText(data.mAppNaem);
-            packageName.setText(data.mAppPackge);
-            version.setText("Name=" + data.mAppVersionName + ", Code=" + data.mAppVersionCode);
+			AppInfo data = getItem(position);
 
-            return convertView;
-        }
+			ImageView icon = ViewHolderHelper.get(convertView, R.id.app_icon);
+			TextView appName = ViewHolderHelper.get(convertView, R.id.app_name);
+			TextView packageName = ViewHolderHelper.get(convertView, R.id.app_package);
+			TextView version = ViewHolderHelper.get(convertView, R.id.app_version);
 
-        /**
-         * Create Application List
-         */
-        public void rebuild() {
-            if (mAppList == null) {
+			if (data.mIcon != null) {
+				icon.setImageDrawable(data.mIcon);
+			}
 
-                Log.d(TAG, "Is Empty Application List");
-                // Package Manager
-                pm = AppInfoActivity.this.getPackageManager();
+			appName.setText(data.mAppNaem);
+			packageName.setText(data.mAppPackge);
+			version.setText("Name=" + data.mAppVersionName + ", Code=" + data.mAppVersionCode);
 
-                // Installed Application
-                mAppList = pm
-                        .getInstalledApplications(PackageManager.GET_UNINSTALLED_PACKAGES
-                                | PackageManager.GET_DISABLED_COMPONENTS);
-            }
+			return convertView;
+		}
 
-            AppFilter filter;
-            switch (MENU_MODE) {
-                case MENU_THIRD_PARTY:
-                    filter = AppInfo.THIRD_PARTY_FILTER;
-                    break;
-                default:
-                    filter = null;
-                    break;
-            }
+		/**
+		 * Create Application List
+		 */
+		public void rebuild() {
+			if (mAppList == null) {
 
-            if (filter != null) {
-                filter.init();
-            }
+				Log.d(TAG, "Is Empty Application List");
+				// Package Manager
+				pm = AppInfoActivity.this.getPackageManager();
 
-            // Reset
-            mListData.clear();
+				// Installed Application
+				mAppList = pm
+					.getInstalledApplications(PackageManager.GET_UNINSTALLED_PACKAGES
+						| PackageManager.GET_DISABLED_COMPONENTS);
+			}
 
-            AppInfo addInfo;
-            ApplicationInfo appInfo;
+			AppFilter filter;
+			switch (MENU_MODE) {
+				case MENU_THIRD_PARTY:
+					filter = AppInfo.THIRD_PARTY_FILTER;
+					break;
+				default:
+					filter = null;
+					break;
+			}
 
-            PackageInfo packageInfo;
+			if (filter != null) {
+				filter.init();
+			}
 
-            for (ApplicationInfo app : mAppList) {
-                appInfo = app;
+			// Reset
+			mListData.clear();
 
-                if (filter == null || filter.filterApp(appInfo)) {
-                    addInfo = new AppInfo();
-                    // App Icon
-                    addInfo.mIcon = app.loadIcon(pm);
-                    // App Name
-                    addInfo.mAppNaem = app.loadLabel(pm).toString();
-                    // App Package Name
-                    addInfo.mAppPackge = app.packageName;
+			AppInfo addInfo;
+			ApplicationInfo appInfo;
 
-                    try {
-                        packageInfo = pm.getPackageInfo(app.packageName, 0);
+			PackageInfo packageInfo;
 
-                        addInfo.mAppVersionName = packageInfo.versionName;
-                        addInfo.mAppVersionCode = packageInfo.versionCode;
-                    } catch (NameNotFoundException e) {
-                        e.printStackTrace();
-                    }
+			for (ApplicationInfo app : mAppList) {
+				appInfo = app;
 
-                    mListData.add(addInfo);
-                }
-            }
+				if (filter == null || filter.filterApp(appInfo)) {
+					addInfo = new AppInfo();
+					// App Icon
+					addInfo.mIcon = app.loadIcon(pm);
+					// App Name
+					addInfo.mAppNaem = app.loadLabel(pm).toString();
+					// App Package Name
+					addInfo.mAppPackge = app.packageName;
 
-            // Name Sort
-            Collections.sort(mListData, AppInfo.ALPHA_COMPARATOR);
-        }
-    }
+					try {
+						packageInfo = pm.getPackageInfo(app.packageName, 0);
 
-    /**
-     * Task
-     * @author nohhs
-     */
-    private class AppTask extends AsyncTask<Void, Void, Void> {
+						addInfo.mAppVersionName = packageInfo.versionName;
+						addInfo.mAppVersionCode = packageInfo.versionCode;
+					} catch (NameNotFoundException e) {
+						e.printStackTrace();
+					}
 
-        @Override
-        protected void onPreExecute() {
-            setLoadingView(true);
-        }
+					mListData.add(addInfo);
+				}
+			}
 
-        @Override
-        protected Void doInBackground(Void... params) {
-            mAdapter.rebuild();
+			// Name Sort
+			Collections.sort(mListData, AppInfo.ALPHA_COMPARATOR);
+			mListView.setScrollY(0);
+		}
+	}
 
-            return null;
-        }
+	/**
+	 * Task
+	 *
+	 * @author nohhs
+	 */
+	private class AppTask extends AsyncTask<Void, Void, Void> {
 
-        @Override
-        protected void onPostExecute(Void result) {
-            mAdapter.notifyDataSetChanged();
-            setLoadingView(false);
-        }
-    }
+		@Override
+		protected void onPreExecute() {
+			setLoadingView(true);
+		}
 
-    @Override
-    protected void onSaveInstanceState(@NotNull Bundle outState) {
-        super.onSaveInstanceState(outState);
+		@Override
+		protected Void doInBackground(Void... params) {
+			mAdapter.rebuild();
+			return null;
+		}
 
-        View childAt = mListView.getChildAt(0);
-        int top = (childAt == null) ? 0 : childAt.getTop();
+		@Override
+		protected void onPostExecute(Void result) {
+			mAdapter.notifyDataSetChanged();
+			setLoadingView(false);
+		}
+	}
 
-        outState.putInt(EXTRA_TAG_FIRST_VISIBLE_POSITION, mListView.getFirstVisiblePosition());
-        outState.putInt(EXTRA_TAG_VISIBLE_OFFSET, top);
-    }
+	@Override
+	protected void onSaveInstanceState(@NotNull Bundle outState) {
+		super.onSaveInstanceState(outState);
 
-    @Override
-    protected void onRestoreInstanceState(@NotNull Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
+		View childAt = mListView.getChildAt(0);
+		int top = (childAt == null) ? 0 : childAt.getTop();
 
-        int position = savedInstanceState.getInt(EXTRA_TAG_FIRST_VISIBLE_POSITION, 0);
-        int top = savedInstanceState.getInt(EXTRA_TAG_VISIBLE_OFFSET, 0);
+		outState.putInt(EXTRA_TAG_FIRST_VISIBLE_POSITION, mListView.getFirstVisiblePosition());
+		outState.putInt(EXTRA_TAG_VISIBLE_OFFSET, top);
+	}
 
-        mListView.setSelectionFromTop(position, top);
-    }
+	@Override
+	protected void onRestoreInstanceState(@NotNull Bundle savedInstanceState) {
+		super.onRestoreInstanceState(savedInstanceState);
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.app_info, menu);
-        return true;
-    }
+		int position = savedInstanceState.getInt(EXTRA_TAG_FIRST_VISIBLE_POSITION, 0);
+		int top = savedInstanceState.getInt(EXTRA_TAG_VISIBLE_OFFSET, 0);
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int menuId = item.getItemId();
-        if (menuId == R.id.app_all) {
-            MENU_MODE = MENU_ALL;
-        } else {
-            MENU_MODE = MENU_THIRD_PARTY;
-        }
+		mListView.setSelectionFromTop(position, top);
+	}
 
-        startTask();
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.app_info, menu);
+		return true;
+	}
 
-        return true;
-    }
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+			case R.id.app_all:
+				MENU_MODE = MENU_ALL;
+				break;
+			case R.id.third_party:
+				MENU_MODE = MENU_THIRD_PARTY;
+				break;
+			case android.R.id.home:
+				finish();
+			default:
+				return true;
+		}
+
+		startTask();
+		return true;
+	}
+
+	@OnItemClick(R.id.listView1)
+	void onAppListItemClick(AdapterView<?> parent, View view, int position, long id) {
+		AppInfo item = mAdapter.getItem(position);
+
+		Intent intent = new Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+		intent.setData(Uri.parse("package:" + item.mAppPackge));
+		startActivity(intent);
+	}
 
 }

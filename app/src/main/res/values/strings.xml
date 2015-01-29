@@ -4,7 +4,6 @@
     <string name="app_name">PluuBasicLib</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
     <string name="MANIFEST_ACTIVITY_INTENT_CATEGORY_NAME">PLUU_SAMPLE_CODE</string>
 
     <!-- Application Info -->
@@ -17,5 +16,9 @@
     <string name="title_activity_recycler_view">Android/RecyclerView</string>
     <string name="title_activity_card_view_builder">Pluu/CardView Builder</string>
     <string name="title_activity_material_main">MaterialMainActivity</string>
+
+    <!-- Resource Viewer -->
+    <string name="title_activity_resource_viewer">Pluu/Resource Viewer</string>
+    <string name="title_activity_resource_detail">ResourceDetailActivity</string>
 
 </resources>

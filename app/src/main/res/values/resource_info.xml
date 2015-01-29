@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="resources_public">구글 리소스</string>
+    <string name="resources_internal">제조사 리소스</string>
+
+    <array name="resource_location_description_array">
+        <item>@string/resources_public</item>
+        <item>@string/resources_internal</item>
+    </array>
+
+    <string name="resource_class_public">android.R</string>
+    <string name="resource_class_internal">com.android.internal.R</string>
+</resources>

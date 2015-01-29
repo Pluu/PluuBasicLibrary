@@ -10,8 +10,6 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -45,6 +43,8 @@ public class MaterialMainActivity extends ActionBarActivity
 
 		// Set up the drawer.
 		mNavigationDrawerFragment.setUp(R.id.navigation_drawer, dlDrawer);
+
+		onNavigationDrawerItemSelected(PlaceholderFragment.newInstance(0));
 	}
 
 	@Override
@@ -67,29 +67,29 @@ public class MaterialMainActivity extends ActionBarActivity
 		dtToggle.onConfigurationChanged(newConfig);
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		if (!mNavigationDrawerFragment.isDrawerOpen()) {
-			getMenuInflater().inflate(R.menu.material_main, menu);
-			return true;
-		}
-		return super.onCreateOptionsMenu(menu);
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		if (dtToggle.onOptionsItemSelected(item)) {
-			return true;
-		}
-
-		int id = item.getItemId();
-
-		if (id == R.id.action_settings) {
-			return true;
-		}
-
-		return super.onOptionsItemSelected(item);
-	}
+//	@Override
+//	public boolean onCreateOptionsMenu(Menu menu) {
+//		if (!mNavigationDrawerFragment.isDrawerOpen()) {
+//			getMenuInflater().inflate(R.menu.material_main, menu);
+//			return true;
+//		}
+//		return super.onCreateOptionsMenu(menu);
+//	}
+//
+//	@Override
+//	public boolean onOptionsItemSelected(MenuItem item) {
+//		if (dtToggle.onOptionsItemSelected(item)) {
+//			return true;
+//		}
+//
+//		int id = item.getItemId();
+//
+//		if (id == R.id.action_settings) {
+//			return true;
+//		}
+//
+//		return super.onOptionsItemSelected(item);
+//	}
 
 	/**
 	 * A placeholder fragment containing a simple view.

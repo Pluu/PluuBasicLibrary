@@ -12,9 +12,6 @@ import android.preference.PreferenceManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -172,25 +169,25 @@ public class NavigationDrawerFragment extends Fragment
 		super.onConfigurationChanged(newConfig);
 	}
 
-	@Override
-	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-		// If the drawer is open, show the global app actions in the action bar. See also
-		// showGlobalContextActionBar, which controls the top-left area of the action bar.
-		if (mDrawerLayout != null && isDrawerOpen()) {
-			inflater.inflate(R.menu.global, menu);
-		}
-		super.onCreateOptionsMenu(menu, inflater);
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
+//	@Override
+//	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+//		// If the drawer is open, show the global app actions in the action bar. See also
+//		// showGlobalContextActionBar, which controls the top-left area of the action bar.
+//		if (mDrawerLayout != null && isDrawerOpen()) {
+//			inflater.inflate(R.menu.global, menu);
+//		}
+//		super.onCreateOptionsMenu(menu, inflater);
+//	}
+//
+//	@Override
+//	public boolean onOptionsItemSelected(MenuItem item) {
 //		if (item.getItemId() == R.id.action_example) {
 //			Toast.makeText(getActivity(), "Example action.", Toast.LENGTH_SHORT).show();
 //			return true;
 //		}
-
-		return super.onOptionsItemSelected(item);
-	}
+//
+//		return super.onOptionsItemSelected(item);
+//	}
 
 	/**
 	 * Callbacks interface that all activities using this fragment must implement.
