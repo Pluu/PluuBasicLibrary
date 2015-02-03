@@ -7,7 +7,7 @@ import java.text.Collator;
 import java.util.Comparator;
 
 /**
- * Application Info
+ * Application greenShow
  * Created by PLUUSYSTEM-NEW on 2014-09-02.
  */
 public class AppInfo {

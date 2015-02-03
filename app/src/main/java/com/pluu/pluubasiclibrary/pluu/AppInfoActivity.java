@@ -9,7 +9,6 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -25,6 +24,7 @@ import android.widget.TextView;
 
 import com.pluu.pluubasiclibrary.R;
 import com.pluu.pluubasiclibrary.extra.ViewHolderHelper;
+import com.pluu.pluubasiclibrary.pluu.base.BaseActionBarActivity;
 import com.pluu.pluubasiclibrary.pluu.item.AppInfo;
 import com.pluu.pluubasiclibrary.pluu.item.AppInfo.AppFilter;
 
@@ -39,10 +39,10 @@ import butterknife.InjectView;
 import butterknife.OnItemClick;
 
 /**
- * Application Info Activity
+ * Application greenShow Activity
  * Created by Administrator on 2014-09-02.
  */
-public class AppInfoActivity extends ActionBarActivity {
+public class AppInfoActivity extends BaseActionBarActivity {
 	private static final String TAG = AppInfoActivity.class.getSimpleName();
 
 	@InjectView(R.id.loading_container)
@@ -69,7 +69,7 @@ public class AppInfoActivity extends ActionBarActivity {
 		setContentView(R.layout.activity_app_info);
 		ButterKnife.inject(this);
 
-		initToolBar();
+		initToolbar(toolbar);
 
 		mLoadingContainer = findViewById(R.id.loading_container);
 		mListView = (ListView) findViewById(R.id.listView1);
@@ -79,11 +79,6 @@ public class AppInfoActivity extends ActionBarActivity {
 
 		// Task Start
 		startTask();
-	}
-
-	private void initToolBar() {
-		setSupportActionBar(toolbar);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 	}
 
 	private void startTask() {
@@ -274,6 +269,10 @@ public class AppInfoActivity extends ActionBarActivity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
+		if (baseOptionsItemSelected(item)) {
+			return true;
+		}
+
 		switch (item.getItemId()) {
 			case R.id.app_all:
 				MENU_MODE = MENU_ALL;
@@ -281,8 +280,6 @@ public class AppInfoActivity extends ActionBarActivity {
 			case R.id.third_party:
 				MENU_MODE = MENU_THIRD_PARTY;
 				break;
-			case android.R.id.home:
-				finish();
 			default:
 				return true;
 		}

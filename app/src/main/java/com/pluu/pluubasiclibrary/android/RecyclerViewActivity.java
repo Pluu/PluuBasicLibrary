@@ -1,7 +1,6 @@
 package com.pluu.pluubasiclibrary.android;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,6 +12,7 @@ import android.view.MenuItem;
 import com.pluu.pluubasiclibrary.R;
 import com.pluu.pluubasiclibrary.android.adapter.RecyclerViewAdapter;
 import com.pluu.pluubasiclibrary.android.adapter.item.DateModel;
+import com.pluu.pluubasiclibrary.pluu.base.BaseActionBarActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +25,7 @@ import butterknife.InjectView;
  * RecyclerViewActivity
  * Created by PLUUSYSTEM-NEW on 2014-11-04.
  */
-public class RecyclerViewActivity extends ActionBarActivity {
+public class RecyclerViewActivity extends BaseActionBarActivity {
 	@InjectView(R.id.recyclerview1)
 	RecyclerView mRecyclerView;
 	@InjectView(R.id.toolbar)
@@ -37,14 +37,10 @@ public class RecyclerViewActivity extends ActionBarActivity {
 		setContentView(R.layout.activity_recycler_view);
 		ButterKnife.inject(this);
 
-		initToolBar();
+		initToolbar(toolbar);
+
 		initValue();
 		viewVerticalLinear();
-	}
-
-	private void initToolBar() {
-		setSupportActionBar(toolbar);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 	}
 
 	private void initValue() {
@@ -82,6 +78,10 @@ public class RecyclerViewActivity extends ActionBarActivity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
+		if (baseOptionsItemSelected(item)) {
+			return true;
+		}
+
 		switch (item.getItemId()) {
 			case R.id.menu_vlinear:
 				viewVerticalLinear();
@@ -94,9 +94,6 @@ public class RecyclerViewActivity extends ActionBarActivity {
 				break;
 			case R.id.menu_staggeredgridlayout:
 				viewStaggeredGridLayout();
-				break;
-			case android.R.id.home:
-				finish();
 				break;
 		}
 

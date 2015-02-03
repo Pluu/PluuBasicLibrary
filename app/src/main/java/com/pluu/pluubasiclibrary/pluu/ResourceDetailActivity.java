@@ -2,17 +2,17 @@ package com.pluu.pluubasiclibrary.pluu;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.pluu.pluubasiclibrary.R;
+import com.pluu.pluubasiclibrary.pluu.base.BaseActionBarActivity;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class ResourceDetailActivity extends ActionBarActivity {
+public class ResourceDetailActivity extends BaseActionBarActivity {
 
 	@InjectView(R.id.main)
 	TextView mMain;
@@ -27,13 +27,8 @@ public class ResourceDetailActivity extends ActionBarActivity {
 		setContentView(R.layout.activity_resource_detail);
 		ButterKnife.inject(this);
 
-		initToolBar();
+		initToolbar(toolbar);
 		initValue();
-	}
-
-	private void initToolBar() {
-		setSupportActionBar(toolbar);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 	}
 
 	private void initValue() {
@@ -47,10 +42,8 @@ public class ResourceDetailActivity extends ActionBarActivity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-			case android.R.id.home:
-				finish();
-				return true;
+		if (baseOptionsItemSelected(item)) {
+			return true;
 		}
 
 		return super.onOptionsItemSelected(item);

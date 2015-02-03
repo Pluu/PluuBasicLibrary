@@ -3,7 +3,6 @@ package com.pluu.pluubasiclibrary.pluu;
 import android.content.Intent;
 import android.content.res.XmlResourceParser;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
@@ -27,6 +26,7 @@ import com.pluu.pluubasiclibrary.pluu.adapter.DrawableAdapter;
 import com.pluu.pluubasiclibrary.pluu.adapter.IntegerAdapter;
 import com.pluu.pluubasiclibrary.pluu.adapter.NormalAdapter;
 import com.pluu.pluubasiclibrary.pluu.adapter.StringAdapter;
+import com.pluu.pluubasiclibrary.pluu.base.BaseActionBarActivity;
 import com.pluu.pluubasiclibrary.pluu.item.RES_TYPE;
 import com.pluu.pluubasiclibrary.pluu.item.ResourceInfo;
 
@@ -37,7 +37,7 @@ import butterknife.InjectView;
 import butterknife.OnItemClick;
 import butterknife.OnItemSelected;
 
-public class ResourceViewActivity extends ActionBarActivity {
+public class ResourceViewActivity extends BaseActionBarActivity {
 	private final String TAG = ResourceViewActivity.class.getSimpleName();
 
 	@InjectView(R.id.spinner)
@@ -63,14 +63,9 @@ public class ResourceViewActivity extends ActionBarActivity {
 		setContentView(R.layout.activity_resource_view);
 		ButterKnife.inject(this);
 
-		initToolBar();
+		initToolbar(toolbar);
 		initResTypeMap();
 		initValue();
-	}
-
-	private void initToolBar() {
-		setSupportActionBar(toolbar);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 	}
 
 	private void initValue() {
@@ -218,10 +213,8 @@ public class ResourceViewActivity extends ActionBarActivity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-			case android.R.id.home:
-				finish();
-				return true;
+		if (baseOptionsItemSelected(item)) {
+			return true;
 		}
 
 		return super.onOptionsItemSelected(item);

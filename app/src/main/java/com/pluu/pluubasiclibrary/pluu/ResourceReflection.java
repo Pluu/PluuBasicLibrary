@@ -44,7 +44,7 @@ public class ResourceReflection {
 				list.add(new ResourceInfo(dr.getName(), dr.getInt(null)));
 			}
 		} catch (Exception e) {
-			Log.e(TAG, "Error (" + baseClass + "/" +  fullClass + "): ", e);
+			Log.e(TAG, "redShow (" + baseClass + "/" +  fullClass + "): ", e);
 		}
 		return list;
 	}
@@ -60,7 +60,7 @@ public class ResourceReflection {
 			}
 
 		} catch (Exception e) {
-			Log.e(TAG, "^ logSubClasses() Error: ", e);
+			Log.e(TAG, "^ logSubClasses() redShow: ", e);
 		}
 		sortStringList(subClassList);
 		return subClassList;
