@@ -1,25 +1,35 @@
 package com.pluu.pluubasiclibrary.pluu;
 
-import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.pluu.pluubasiclibrary.R;
+import com.pluu.pluubasiclibrary.pluu.base.BaseActionBarActivity;
 import com.pluu.pluubasiclibrary.pluu.builder.CardAttribute;
 import com.pluu.pluubasiclibrary.pluu.builder.CardViewBuilder;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 
 /**
  * Card View Builder Activity
  * Created by Administrator on 2014-11-10.
  */
-public class CardViewBuilderActivity extends Activity {
+public class CardViewBuilderActivity extends BaseActionBarActivity {
+
+	@InjectView(R.id.toolbar)
+	Toolbar toolbar;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_card_view_builder);
+		ButterKnife.inject(this);
 
+		initToolbar(toolbar);
 		initView();
 	}
 
@@ -71,6 +81,15 @@ public class CardViewBuilderActivity extends Activity {
 			.with(this)
 			.setAttribute(attribute)
 			.into(view);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		if (baseOptionsItemSelected(item)) {
+			return true;
+		}
+
+		return super.onOptionsItemSelected(item);
 	}
 
 }
