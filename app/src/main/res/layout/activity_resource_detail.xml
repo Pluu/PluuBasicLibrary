@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.pluu.pluubasiclibrary.pluu.AppInfoActivity">
+    tools:context="com.pluu.pluubasiclibrary.pluu.ResourceDetailActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -13,34 +13,27 @@
         app:theme="@style/ToolbarOverflow"
         app:popupTheme="@style/Theme.AppCompat"/>
 
-    <ListView
+    <TextView
         android:layout_below="@+id/toolbar"
-        android:id="@+id/listView1"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        tools:text="Large Text"
+        android:id="@+id/main"/>
 
-    <LinearLayout
-        android:layout_below="@+id/toolbar"
-        android:id="@+id/loading_container"
+    <ScrollView
         android:layout_width="match_parent"
+        android:layout_marginTop="6dp"
+        android:layout_below="@+id/main"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:visibility="gone">
-
-        <ProgressBar
-            style="?android:attr/progressBarStyleLarge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+        android:scrollbarStyle="outsideInset"
+        android:id="@+id/scrollView">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="4dip"
-            android:singleLine="true"
-            android:text="@string/settings_safetylegal_activity_loading"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
-    </LinearLayout>
+            tools:text="New Text"
+            android:id="@+id/detail"/>
+    </ScrollView>
 
 </RelativeLayout>

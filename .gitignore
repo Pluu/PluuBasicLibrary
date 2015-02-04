@@ -4,3 +4,6 @@
 /.idea/libraries
 .DS_Store
 /build
+gradle/wrapper/gradle-wrapper.jar
+.idea/codeStyleSettings.xml
+.idea/codeStyleSettings.xml

@@ -6,43 +6,83 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme">
-        <activity android:name="com.pluu.pluubasiclibrary.MainActivity">
+        android:theme="@style/BaseMaterialAppTheme">
+        <activity android:name=".MaterialMainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <!-- <category android:name="android.intent.category.LAUNCHER"/> -->
             </intent-filter>
         </activity>
         <activity
-            android:name="com.pluu.pluubasiclibrary.pluu.AppInfoActivity"
+            android:name=".pluu.AppInfoActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_app_info">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="PLUU_SAMPLE_CODE" />
+                <category android:name="PLUU_SAMPLE_CODE"/>
             </intent-filter>
         </activity>
         <activity
-            android:name="com.pluu.pluubasiclibrary.android.RecyclerViewActivity"
+            android:name=".android.RecyclerViewActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_recycler_view">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="PLUU_SAMPLE_CODE" />
+                <category android:name="PLUU_SAMPLE_CODE"/>
             </intent-filter>
         </activity>
         <activity
-            android:name="com.pluu.pluubasiclibrary.pluu.CardViewBuilderActivity"
+            android:name=".pluu.CardViewBuilderActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_card_view_builder">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="PLUU_SAMPLE_CODE" />
+                <category android:name="PLUU_SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".pluu.ResourceViewActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/title_activity_resource_viewer">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="PLUU_SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".pluu.ResourceDetailActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/title_activity_resource_detail"/>
+        <activity
+            android:name=".pluu.OAuthActivity"
+            android:label="@string/title_activity_oauth">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="PLUU_SAMPLE_CODE"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".pluu.SimpleToastActivity"
+            android:label="@string/title_activity_simple_toast">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="PLUU_SAMPLE_CODE"/>
             </intent-filter>
         </activity>
     </application>
