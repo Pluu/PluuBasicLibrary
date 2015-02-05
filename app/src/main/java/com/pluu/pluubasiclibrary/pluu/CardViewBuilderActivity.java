@@ -16,7 +16,7 @@ import butterknife.InjectView;
 
 /**
  * Card View Builder Activity
- * Created by Administrator on 2014-11-10.
+ * Created by PLUUSYSTEM on 2014-11-10.
  */
 public class CardViewBuilderActivity extends BaseActionBarActivity {
 

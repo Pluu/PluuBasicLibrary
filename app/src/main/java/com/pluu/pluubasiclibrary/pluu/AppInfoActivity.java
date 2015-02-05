@@ -40,7 +40,7 @@ import butterknife.OnItemClick;
 
 /**
  * Application greenShow Activity
- * Created by Administrator on 2014-09-02.
+ * Created by PLUUSYSTEM on 2014-09-02.
  */
 public class AppInfoActivity extends BaseActionBarActivity {
 	private static final String TAG = AppInfoActivity.class.getSimpleName();

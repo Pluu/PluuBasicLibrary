@@ -6,12 +6,27 @@
 > 업데이트는 비정기적으로 관리자 마음대로 이루어집니다. 업데이트 분야는 자주 사용한 라이브러리, 커스텀 라이브러리, Common Class을 주작업입니다.
 > （アップデートは非定期的に管理者の気まぐれで行われます。アップデートはよく使われるライブラリ、カスタムライブラリ、Commonクラスがメインです。）
 
-##Lasted Update 1.0.4
+##Lasted Update 1.1.0
+ * Material Design
+ * Resource Viewer
+
+![PluuBasicLibrary](/screenshots/ResourceViewer.png)
+![PluuBasicLibrary](/screenshots/ResourceViewer2.png)
+
+ * Simple Toast
+
+![PluuBasicLibrary](/screenshots/SimpleToast.png)
+![PluuBasicLibrary](/screenshots/SimpleToast_Black.png)
+![PluuBasicLibrary](/screenshots/SimpleToast_Blue.png)
+![PluuBasicLibrary](/screenshots/SimpleToast_Gray.png)
+![PluuBasicLibrary](/screenshots/SimpleToast_Green.png)
+![PluuBasicLibrary](/screenshots/SimpleToast_Red.png)
+
+##Update 1.0.4
 
  * CardView Builder Add
 
 ![PluuBasicLibrary](/screenshots/cardview.png)
-![PluuBasicLibrary](/screenshots/cardview1.png)
 
 ##Update 1.0.3
 

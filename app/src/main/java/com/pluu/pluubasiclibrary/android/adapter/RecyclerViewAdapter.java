@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  * RecyclerViewAdapter
- * Created by PLUUSYSTEM-NEW on 2014-11-04.
+ * Created by PLUUSYSTEM on 2014-11-04.
  */
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolderItem> {
     private List<DateModel> list;
@@ -41,7 +41,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return list != null ? list.size() : 0;
     }
 
-    class ViewHolderItem extends RecyclerView.ViewHolder {
+	public void addItem(int position, DateModel item) {
+		list.add(position, item);
+		notifyItemInserted(position);
+	}
+
+	public void remove(int position) {
+		list.remove(position);
+		notifyItemRemoved(position);
+	}
+
+	class ViewHolderItem extends RecyclerView.ViewHolder {
         TextView tv1, tv2;
 
         public ViewHolderItem(android.view.View itemView) {

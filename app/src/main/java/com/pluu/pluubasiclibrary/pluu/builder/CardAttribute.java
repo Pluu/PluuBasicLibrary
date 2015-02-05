@@ -7,7 +7,7 @@ import com.pluu.pluubasiclibrary.R;
 
 /**
  * CardView Attribute
- * Created by PLUUSYSTEM-NEW on 2014-11-10.
+ * Created by PLUUSYSTEM on 2014-11-10.
  */
 public class CardAttribute {
     private int shadowColor;

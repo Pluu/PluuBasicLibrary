@@ -11,7 +11,7 @@ import android.view.View;
 
 /**
  * CardView Builder
- * Created by PLUUSYSTEM-NEW on 2014-11-10.
+ * Created by PLUUSYSTEM on 2014-11-10.
  */
 public class CardViewBuilder {
     private CardAttribute attribute;
