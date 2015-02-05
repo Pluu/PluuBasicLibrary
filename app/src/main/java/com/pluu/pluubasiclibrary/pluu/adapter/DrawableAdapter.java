@@ -13,7 +13,7 @@ import com.pluu.pluubasiclibrary.pluu.item.ResourceInfo;
 import java.util.List;
 
 /**
- * Created by Administrator on 2015-01-29.
+ * Created by PLUUSYSTEM on 2015-01-29.
  */
 public class DrawableAdapter extends NormalAdapter {
 	public DrawableAdapter(Context context, List<ResourceInfo> list) {

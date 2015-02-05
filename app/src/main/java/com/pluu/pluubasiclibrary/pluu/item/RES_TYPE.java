@@ -1,7 +1,7 @@
 package com.pluu.pluubasiclibrary.pluu.item;
 
 /**
- * Created by PLUUSYSTEM-NEW on 2015-01-29.
+ * Created by PLUUSYSTEM on 2015-01-29.
  */
 public enum RES_TYPE {
 	NORMAL,

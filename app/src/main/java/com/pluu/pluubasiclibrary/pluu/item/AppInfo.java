@@ -8,7 +8,7 @@ import java.util.Comparator;
 
 /**
  * Application greenShow
- * Created by PLUUSYSTEM-NEW on 2014-09-02.
+ * Created by PLUUSYSTEM on 2014-09-02.
  */
 public class AppInfo {
     public static interface AppFilter {

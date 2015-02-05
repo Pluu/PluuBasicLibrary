@@ -11,6 +11,7 @@ import com.pluu.pluubasiclibrary.R;
 
 /**
  * Simple Toast
+ * base : https://github.com/Pierry/SimpleToast
  * Created by nohhs on 2015-02-04.
  */
 public class SimpleToast {

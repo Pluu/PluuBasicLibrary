@@ -6,7 +6,7 @@ import android.view.MenuItem;
 
 /**
  * BaseActionBar Activity
- * Created by PLUUSYSTEM-NEW on 2015-02-03.
+ * Created by PLUUSYSTEM on 2015-02-03.
  */
 public class BaseActionBarActivity extends ActionBarActivity {
 

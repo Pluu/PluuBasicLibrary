@@ -20,16 +20,20 @@ import java.util.Random;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.OnClick;
 
 /**
  * RecyclerViewActivity
- * Created by PLUUSYSTEM-NEW on 2014-11-04.
+ * Created by PLUUSYSTEM on 2014-11-04.
  */
 public class RecyclerViewActivity extends BaseActionBarActivity {
 	@InjectView(R.id.recyclerview1)
 	RecyclerView mRecyclerView;
 	@InjectView(R.id.toolbar)
 	Toolbar toolbar;
+
+	private Random r = new Random(System.currentTimeMillis());
+	private RecyclerViewAdapter adapter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -45,28 +49,30 @@ public class RecyclerViewActivity extends BaseActionBarActivity {
 
 	private void initValue() {
 		List<DateModel> list = new ArrayList<>();
-		DateModel item;
-
-		Random r = new Random(System.currentTimeMillis());
-		StringBuffer strBuffer = new StringBuffer();
-
-		for (int i = 0; i < 20; i++) {
-			item = new DateModel();
-			item.text1 = "Text1_" + i;
-
-			strBuffer.setLength(0);
-
-			strBuffer.append("TextData=");
-			int size = r.nextInt(10);
-			for (int j = 0; j < size; j++) {
-				strBuffer.append(",Text2_" + j);
-			}
-			item.text2 = strBuffer.toString();
-
-			list.add(item);
+		for (int i = 0; i < 5; i++) {
+			list.add(getItem(i));
 		}
 
-		mRecyclerView.setAdapter(new RecyclerViewAdapter(list));
+		adapter = new RecyclerViewAdapter(list);
+		mRecyclerView.setAdapter(adapter);
+
+		// Item Decoration
+		// TODO : ItemDecoration
+	}
+
+	private DateModel getItem(int position) {
+		StringBuffer strBuffer = new StringBuffer();
+		DateModel item = new DateModel();
+
+		item.text1 = "Main_" + position;
+		strBuffer.append("Sub=");
+		strBuffer.append("Text2_0");
+		int size = r.nextInt(10);
+		for (int j = 1; j < size; j++) {
+			strBuffer.append(",Text2_" + j);
+		}
+		item.text2 = strBuffer.toString();
+		return item;
 	}
 
 	@Override
@@ -98,6 +104,20 @@ public class RecyclerViewActivity extends BaseActionBarActivity {
 		}
 
 		return true;
+	}
+
+	@OnClick(R.id.button)
+	public void onAddClick() {
+		int position = adapter.getItemCount();
+		adapter.addItem(position, getItem(position));
+		mRecyclerView.scrollToPosition(position);
+	}
+
+	@OnClick(R.id.button2)
+	public void onRemoveClick() {
+		if (adapter.getItemCount() > 0) {
+			adapter.remove(adapter.getItemCount() - 1);
+		}
 	}
 
 	private void viewVerticalLinear() {

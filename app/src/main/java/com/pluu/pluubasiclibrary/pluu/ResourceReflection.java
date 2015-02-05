@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by PLUUSYSTEM-NEW on 2015-01-29.
+ * Created by PLUUSYSTEM on 2015-01-29.
  */
 public class ResourceReflection {
 	private final String TAG = this.getClass().getSimpleName();

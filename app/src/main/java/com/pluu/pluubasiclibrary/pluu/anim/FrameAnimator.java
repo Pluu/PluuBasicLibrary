@@ -14,7 +14,7 @@ import java.util.ArrayList;
 /**
  * OneShot Frame Animator
  * <br>AnimationDrawable 사용 기반
- * Created by PLUUSYSTEM-NEW on 2014-10-22.
+ * Created by PLUUSYSTEM on 2014-10-22.
  */
 public class FrameAnimator extends Animator implements AnimatorListener {
 

@@ -1,4 +1,4 @@
-package com.pluu.pluubasiclibrary.pluu;
+package com.pluu.pluubasiclibrary.pluu.common;
 
 import android.app.Activity;
 import android.content.Context;
@@ -10,7 +10,7 @@ import java.lang.reflect.Field;
 
 /**
  * Common
- * Created by Administrator on 2014-10-29.
+ * Created by PLUUSYSTEM on 2014-10-29.
  */
 public class ActivityCommon {
 
