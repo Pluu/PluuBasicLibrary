@@ -13,7 +13,7 @@
 ![PluuBasicLibrary](/screenshots/ResourceViewer.png)
 ![PluuBasicLibrary](/screenshots/ResourceViewer2.png)
 
- * Resource Viewer
+ * Simple Toast
 
 ![PluuBasicLibrary](/screenshots/SimpleToast.png)
 ![PluuBasicLibrary](/screenshots/SimpleToast_Black.png)
