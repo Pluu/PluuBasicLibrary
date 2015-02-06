@@ -20,7 +20,6 @@
     <!-- Resource Viewer -->
     <string name="title_activity_resource_viewer">Pluu/Resource Viewer</string>
     <string name="title_activity_resource_detail">ResourceDetailActivity</string>
-    <string name="title_activity_oauth">Pluu/OAuth [진행중]</string>
     <string name="title_activity_simple_toast">Pluu/Simple Toast</string>
 
 </resources>

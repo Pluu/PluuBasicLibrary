@@ -68,15 +68,6 @@
             android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_resource_detail"/>
         <activity
-            android:name=".pluu.OAuthActivity"
-            android:label="@string/title_activity_oauth">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="PLUU_SAMPLE_CODE"/>
-            </intent-filter>
-        </activity>
-        <activity
             android:name=".pluu.SimpleToastActivity"
             android:label="@string/title_activity_simple_toast">
             <intent-filter>
