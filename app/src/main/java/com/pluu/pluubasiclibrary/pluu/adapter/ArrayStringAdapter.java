@@ -1,5 +1,8 @@
 package com.pluu.pluubasiclibrary.pluu.adapter;
 
+import java.util.Arrays;
+import java.util.List;
+
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,9 +10,6 @@ import android.widget.TextView;
 
 import com.pluu.pluubasiclibrary.R;
 import com.pluu.pluubasiclibrary.pluu.item.ResourceInfo;
-
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * Created by PLUUSYSTEM on 2015-01-29.

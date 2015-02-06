@@ -1,5 +1,9 @@
 package com.pluu.pluubasiclibrary.android;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,18 +13,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+import butterknife.OnClick;
 import com.pluu.pluubasiclibrary.R;
 import com.pluu.pluubasiclibrary.android.adapter.RecyclerViewAdapter;
 import com.pluu.pluubasiclibrary.android.adapter.item.DateModel;
 import com.pluu.pluubasiclibrary.pluu.base.BaseActionBarActivity;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
-import butterknife.ButterKnife;
-import butterknife.InjectView;
-import butterknife.OnClick;
 
 /**
  * RecyclerViewActivity
@@ -106,14 +105,14 @@ public class RecyclerViewActivity extends BaseActionBarActivity {
 		return true;
 	}
 
-	@OnClick(R.id.button)
+	@OnClick(R.id.btnAdd)
 	public void onAddClick() {
 		int position = adapter.getItemCount();
 		adapter.addItem(position, getItem(position));
 		mRecyclerView.scrollToPosition(position);
 	}
 
-	@OnClick(R.id.button2)
+	@OnClick(R.id.btnRemove)
 	public void onRemoveClick() {
 		if (adapter.getItemCount() > 0) {
 			adapter.remove(adapter.getItemCount() - 1);

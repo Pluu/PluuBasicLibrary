@@ -1,15 +1,14 @@
 package com.pluu.pluubasiclibrary.pluu;
 
+import java.io.IOException;
+import java.util.HashMap;
+
 import android.content.res.XmlResourceParser;
 import android.text.TextUtils;
 
 import com.google.common.base.Strings;
 import com.google.common.collect.Maps;
-
 import org.xmlpull.v1.XmlPullParserException;
-
-import java.io.IOException;
-import java.util.HashMap;
 
 /**
  * Created by PLUUSYSTEM on 2015-01-29.

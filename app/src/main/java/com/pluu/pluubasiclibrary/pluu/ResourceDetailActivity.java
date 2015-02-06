@@ -6,11 +6,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.pluu.pluubasiclibrary.R;
-import com.pluu.pluubasiclibrary.pluu.base.BaseActionBarActivity;
-
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import com.pluu.pluubasiclibrary.R;
+import com.pluu.pluubasiclibrary.pluu.base.BaseActionBarActivity;
 
 public class ResourceDetailActivity extends BaseActionBarActivity {
 

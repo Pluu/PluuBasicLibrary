@@ -1,5 +1,7 @@
 package com.pluu.pluubasiclibrary.pluu.adapter;
 
+import java.util.List;
+
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.SparseArray;
@@ -11,8 +13,6 @@ import android.widget.TextView;
 
 import com.pluu.pluubasiclibrary.R;
 import com.pluu.pluubasiclibrary.pluu.item.ResourceInfo;
-
-import java.util.List;
 
 /**
  * Created by PLUUSYSTEM on 2015-01-29.

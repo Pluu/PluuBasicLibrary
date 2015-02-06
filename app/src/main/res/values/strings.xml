@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+	<!-- 네트워크 -->
+	<string name="system_error">통신에 실패했습니다. 잠시후 다시 시도해주세요.</string>
+
     <string name="app_name">PluuBasicLib</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="hello_world">Hello world!</string>
