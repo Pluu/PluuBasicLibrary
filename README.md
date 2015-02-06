@@ -64,16 +64,11 @@
 
 ##Next Task??
 
-**Network**
-* Volley, Custom Volley Request
-
 **Image**
 * Picasso Transformation
-* Image Mask Builder
 
 **Etc**
 * Annotation
-
 
 * * *
 
