@@ -1,12 +1,12 @@
 package com.pluu.pluubasiclibrary.pluu.common;
 
+import java.lang.reflect.Field;
+
 import android.app.Activity;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.inputmethod.InputMethodManager;
-
-import java.lang.reflect.Field;
 
 /**
  * Common

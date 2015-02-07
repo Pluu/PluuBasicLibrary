@@ -1,5 +1,7 @@
 package com.pluu.pluubasiclibrary.pluu;
 
+import java.util.ArrayList;
+
 import android.content.Intent;
 import android.content.res.XmlResourceParser;
 import android.os.Bundle;
@@ -14,6 +16,10 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+import butterknife.OnItemClick;
+import butterknife.OnItemSelected;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Multimaps;
@@ -29,13 +35,6 @@ import com.pluu.pluubasiclibrary.pluu.adapter.StringAdapter;
 import com.pluu.pluubasiclibrary.pluu.base.BaseActionBarActivity;
 import com.pluu.pluubasiclibrary.pluu.item.RES_TYPE;
 import com.pluu.pluubasiclibrary.pluu.item.ResourceInfo;
-
-import java.util.ArrayList;
-
-import butterknife.ButterKnife;
-import butterknife.InjectView;
-import butterknife.OnItemClick;
-import butterknife.OnItemSelected;
 
 public class ResourceViewActivity extends BaseActionBarActivity {
 	private final String TAG = ResourceViewActivity.class.getSimpleName();

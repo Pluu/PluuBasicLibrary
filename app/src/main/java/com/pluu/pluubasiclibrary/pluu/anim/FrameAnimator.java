@@ -1,5 +1,7 @@
 package com.pluu.pluubasiclibrary.pluu.anim;
 
+import java.util.ArrayList;
+
 import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
 import android.animation.TimeInterpolator;
@@ -8,8 +10,6 @@ import android.content.res.Resources;
 import android.graphics.drawable.AnimationDrawable;
 import android.view.View;
 import android.view.ViewPropertyAnimator;
-
-import java.util.ArrayList;
 
 /**
  * OneShot Frame Animator

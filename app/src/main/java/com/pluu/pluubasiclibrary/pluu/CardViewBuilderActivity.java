@@ -6,13 +6,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 import com.pluu.pluubasiclibrary.R;
 import com.pluu.pluubasiclibrary.pluu.base.BaseActionBarActivity;
 import com.pluu.pluubasiclibrary.pluu.builder.CardAttribute;
 import com.pluu.pluubasiclibrary.pluu.builder.CardViewBuilder;
-
-import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 /**
  * Card View Builder Activity

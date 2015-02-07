@@ -1,5 +1,9 @@
 package com.pluu.pluubasiclibrary.pluu;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
@@ -22,21 +26,15 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+import butterknife.OnItemClick;
 import com.pluu.pluubasiclibrary.R;
 import com.pluu.pluubasiclibrary.extra.ViewHolderHelper;
 import com.pluu.pluubasiclibrary.pluu.base.BaseActionBarActivity;
 import com.pluu.pluubasiclibrary.pluu.item.AppInfo;
 import com.pluu.pluubasiclibrary.pluu.item.AppInfo.AppFilter;
-
 import org.jetbrains.annotations.NotNull;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
-import butterknife.ButterKnife;
-import butterknife.InjectView;
-import butterknife.OnItemClick;
 
 /**
  * Application greenShow Activity
@@ -98,7 +96,7 @@ public class AppInfoActivity extends BaseActionBarActivity {
 	/**
 	 * List Adapter
 	 *
-	 * @author nohhs
+	 * @author PLUUSYSTEM
 	 */
 	private class IAAdapter extends BaseAdapter {
 		private List<ApplicationInfo> mAppList = null;
@@ -217,7 +215,7 @@ public class AppInfoActivity extends BaseActionBarActivity {
 	/**
 	 * Task
 	 *
-	 * @author nohhs
+	 * @author PLUUSYSTEM
 	 */
 	private class AppTask extends AsyncTask<Void, Void, Void> {
 
