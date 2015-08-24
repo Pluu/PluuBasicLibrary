@@ -6,10 +6,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import com.pluu.pluubasiclibrary.R;
-import com.pluu.pluubasiclibrary.pluu.base.BaseActionBarActivity;
+import com.pluu.pluubasiclibrary.pluu.base.BaseActivity;
 import com.pluu.pluubasiclibrary.pluu.builder.CardAttribute;
 import com.pluu.pluubasiclibrary.pluu.builder.CardViewBuilder;
 
@@ -17,16 +17,16 @@ import com.pluu.pluubasiclibrary.pluu.builder.CardViewBuilder;
  * Card View Builder Activity
  * Created by PLUUSYSTEM on 2014-11-10.
  */
-public class CardViewBuilderActivity extends BaseActionBarActivity {
+public class CardViewBuilderActivity extends BaseActivity {
 
-	@InjectView(R.id.toolbar)
+	@Bind(R.id.toolbar)
 	Toolbar toolbar;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_card_view_builder);
-		ButterKnife.inject(this);
+		ButterKnife.bind(this);
 
 		initToolbar(toolbar);
 		initView();

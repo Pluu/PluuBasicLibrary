@@ -9,23 +9,23 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import com.pluu.pluubasiclibrary.R;
-import com.pluu.pluubasiclibrary.pluu.base.BaseActionBarActivity;
+import com.pluu.pluubasiclibrary.pluu.base.BaseActivity;
 import com.pluu.pluubasiclibrary.pluu.base.SimpleToast;
 import com.pluu.pluubasiclibrary.pluu.base.SimpleToast.COLOR_TYPE;
 
-public class SimpleToastActivity extends BaseActionBarActivity {
+public class SimpleToastActivity extends BaseActivity {
 
-	@InjectView(R.id.toolbar)
+	@Bind(R.id.toolbar)
 	Toolbar toolbar;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_simple_toast);
-		ButterKnife.inject(this);
+		ButterKnife.bind(this);
 
 		initToolbar(toolbar);
 

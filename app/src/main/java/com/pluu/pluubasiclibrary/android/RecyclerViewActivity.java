@@ -1,9 +1,5 @@
 package com.pluu.pluubasiclibrary.android;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,22 +9,25 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import butterknife.OnClick;
 import com.pluu.pluubasiclibrary.R;
 import com.pluu.pluubasiclibrary.android.adapter.RecyclerViewAdapter;
 import com.pluu.pluubasiclibrary.android.adapter.item.DateModel;
-import com.pluu.pluubasiclibrary.pluu.base.BaseActionBarActivity;
 
 /**
  * RecyclerViewActivity
  * Created by PLUUSYSTEM on 2014-11-04.
  */
-public class RecyclerViewActivity extends BaseActionBarActivity {
-	@InjectView(R.id.recyclerview1)
+public class RecyclerViewActivity extends com.pluu.pluubasiclibrary.pluu.base.BaseActivity {
+	@Bind(R.id.recyclerview1)
 	RecyclerView mRecyclerView;
-	@InjectView(R.id.toolbar)
+	@Bind(R.id.toolbar)
 	Toolbar toolbar;
 
 	private Random r = new Random(System.currentTimeMillis());
@@ -38,7 +37,7 @@ public class RecyclerViewActivity extends BaseActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_recycler_view);
-		ButterKnife.inject(this);
+		ButterKnife.bind(this);
 
 		initToolbar(toolbar);
 

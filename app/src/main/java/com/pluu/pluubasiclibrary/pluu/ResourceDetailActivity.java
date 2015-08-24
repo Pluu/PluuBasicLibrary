@@ -6,25 +6,25 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import com.pluu.pluubasiclibrary.R;
-import com.pluu.pluubasiclibrary.pluu.base.BaseActionBarActivity;
+import com.pluu.pluubasiclibrary.pluu.base.BaseActivity;
 
-public class ResourceDetailActivity extends BaseActionBarActivity {
+public class ResourceDetailActivity extends BaseActivity {
 
-	@InjectView(R.id.main)
+	@Bind(R.id.main)
 	TextView mMain;
-	@InjectView(R.id.detail)
+	@Bind(R.id.detail)
 	TextView mDetail;
-	@InjectView(R.id.toolbar)
+	@Bind(R.id.toolbar)
 	Toolbar toolbar;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_resource_detail);
-		ButterKnife.inject(this);
+		ButterKnife.bind(this);
 
 		initToolbar(toolbar);
 		initValue();

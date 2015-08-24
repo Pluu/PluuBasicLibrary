@@ -1,9 +1,5 @@
 package com.pluu.pluubasiclibrary.pluu;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
@@ -26,12 +22,16 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import butterknife.OnItemClick;
 import com.pluu.pluubasiclibrary.R;
 import com.pluu.pluubasiclibrary.extra.ViewHolderHelper;
-import com.pluu.pluubasiclibrary.pluu.base.BaseActionBarActivity;
+import com.pluu.pluubasiclibrary.pluu.base.BaseActivity;
 import com.pluu.pluubasiclibrary.pluu.item.AppInfo;
 import com.pluu.pluubasiclibrary.pluu.item.AppInfo.AppFilter;
 import org.jetbrains.annotations.NotNull;
@@ -40,16 +40,16 @@ import org.jetbrains.annotations.NotNull;
  * Application greenShow Activity
  * Created by PLUUSYSTEM on 2014-09-02.
  */
-public class AppInfoActivity extends BaseActionBarActivity {
+public class AppInfoActivity extends BaseActivity {
 	private static final String TAG = AppInfoActivity.class.getSimpleName();
 
-	@InjectView(R.id.loading_container)
+	@Bind(R.id.loading_container)
 	View mLoadingContainer;
-	@InjectView(R.id.listView1)
+	@Bind(R.id.listView1)
 	ListView mListView;
 	private IAAdapter mAdapter = null;
 
-	@InjectView(R.id.toolbar)
+	@Bind(R.id.toolbar)
 	Toolbar toolbar;
 
 	private final int MENU_THIRD_PARTY = 0;
@@ -65,7 +65,7 @@ public class AppInfoActivity extends BaseActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_app_info);
-		ButterKnife.inject(this);
+		ButterKnife.bind(this);
 
 		initToolbar(toolbar);
 

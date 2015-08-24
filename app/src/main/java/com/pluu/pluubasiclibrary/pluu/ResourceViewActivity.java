@@ -1,7 +1,5 @@
 package com.pluu.pluubasiclibrary.pluu;
 
-import java.util.ArrayList;
-
 import android.content.Intent;
 import android.content.res.XmlResourceParser;
 import android.os.Bundle;
@@ -16,8 +14,10 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import butterknife.OnItemClick;
 import butterknife.OnItemSelected;
 import com.google.common.collect.ArrayListMultimap;
@@ -32,22 +32,22 @@ import com.pluu.pluubasiclibrary.pluu.adapter.DrawableAdapter;
 import com.pluu.pluubasiclibrary.pluu.adapter.IntegerAdapter;
 import com.pluu.pluubasiclibrary.pluu.adapter.NormalAdapter;
 import com.pluu.pluubasiclibrary.pluu.adapter.StringAdapter;
-import com.pluu.pluubasiclibrary.pluu.base.BaseActionBarActivity;
+import com.pluu.pluubasiclibrary.pluu.base.BaseActivity;
 import com.pluu.pluubasiclibrary.pluu.item.RES_TYPE;
 import com.pluu.pluubasiclibrary.pluu.item.ResourceInfo;
 
-public class ResourceViewActivity extends BaseActionBarActivity {
+public class ResourceViewActivity extends BaseActivity {
 	private final String TAG = ResourceViewActivity.class.getSimpleName();
 
-	@InjectView(R.id.spinner)
+	@Bind(R.id.spinner)
 	Spinner mSpinner;
-	@InjectView(R.id.spinner2)
+	@Bind(R.id.spinner2)
 	Spinner mSpinner2;
-	@InjectView(R.id.listView)
+	@Bind(R.id.listView)
 	ListView mListView;
-	@InjectView(R.id.emptyView)
+	@Bind(R.id.emptyView)
 	TextView mEmptyView;
-	@InjectView(R.id.toolbar)
+	@Bind(R.id.toolbar)
 	Toolbar toolbar;
 
 	private ResourceReflection reflection;
@@ -60,7 +60,7 @@ public class ResourceViewActivity extends BaseActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_resource_view);
-		ButterKnife.inject(this);
+		ButterKnife.bind(this);
 
 		initToolbar(toolbar);
 		initResTypeMap();
