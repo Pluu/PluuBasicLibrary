@@ -25,4 +25,7 @@
     <string name="title_activity_resource_detail">ResourceDetailActivity</string>
     <string name="title_activity_simple_toast">Pluu/Simple Toast</string>
 
+    <!--Custom Dialog -->
+    <string name="title_activity_custom_dialog">Pluu/Custom Dialog</string>
+
 </resources>

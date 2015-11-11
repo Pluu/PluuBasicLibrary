@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	android:id="@+id/root"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:gravity="center"
+	android:orientation="vertical">
+
+	<LinearLayout
+		android:id="@+id/popup"
+		android:layout_width="300dp"
+		android:layout_height="wrap_content"
+		android:background="@drawable/popup_bg_d"
+		android:orientation="vertical"
+		android:padding="0dp">
+
+		<LinearLayout
+			android:id="@+id/popup_header"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical">
+
+			<TextView
+				android:id="@+id/title"
+				android:layout_width="match_parent"
+				android:layout_height="48dp"
+				android:gravity="center"
+				android:textColor="@color/color_404040"
+				android:textSize="18sp"/>
+
+			<ImageView
+				android:id="@+id/divide"
+				android:layout_width="match_parent"
+				android:layout_height="1dp"
+				android:background="@color/color_E5E5E5"/>
+		</LinearLayout>
+
+		<LinearLayout
+			android:id="@+id/content_box"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical">
+
+			<TextView
+				android:id="@+id/content"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:gravity="center"
+				android:maxHeight="400dp"
+				android:paddingBottom="30dp"
+				android:paddingLeft="25dp"
+				android:paddingRight="25dp"
+				android:paddingTop="15dp"
+				android:scrollbars="vertical"
+				android:textColor="@color/color_404040"
+				android:textSize="16sp"/>
+
+			<FrameLayout
+				android:id="@+id/content_group"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:maxHeight="400dp"
+				android:visibility="gone">
+			</FrameLayout>
+		</LinearLayout>
+
+		<ImageView
+			android:id="@+id/divide2"
+			android:layout_width="match_parent"
+			android:layout_height="1dp"
+			android:background="@color/color_E5E5E5"/>
+
+		<LinearLayout
+			android:id="@+id/button_box"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:gravity="center"
+			android:orientation="horizontal">
+
+			<Button
+				android:id="@+id/bt_left"
+				style="@style/button"
+				android:layout_width="match_parent"
+				android:layout_height="48dp"
+				android:layout_weight="1"
+				android:background="@drawable/selector_btn_dark_a"
+				android:text="@android:string/cancel"/>
+
+			<Button
+				android:id="@+id/bt_right"
+				style="@style/button"
+				android:layout_width="match_parent"
+				android:layout_height="48dp"
+				android:layout_weight="1"
+				android:background="@drawable/selector_btn_primary_b"
+				android:text="@android:string/ok"/>
+		</LinearLayout>
+	</LinearLayout>
+
+</LinearLayout>

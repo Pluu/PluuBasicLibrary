@@ -1,5 +1,6 @@
 package com.pluu.pluubasiclibrary.pluu.base;
 
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -12,7 +13,10 @@ public class BaseActivity extends AppCompatActivity {
 
 	protected void initToolbar(Toolbar toolbar) {
 		setSupportActionBar(toolbar);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		ActionBar actionBar = getSupportActionBar();
+		if (actionBar != null) {
+			actionBar.setDisplayHomeAsUpEnabled(true);
+		}
 	}
 
 	protected boolean baseOptionsItemSelected(MenuItem item) {

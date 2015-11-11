@@ -1,14 +1,20 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 22
-    buildToolsVersion '22.0.1'
+    project.ext.set("defaultDeployPhase", "${project.hasProperty('deploy_phase') ? deploy_phase.toString() : "$DEFAULT_PHASE"}")
+
+    compileSdkVersion 23
+    buildToolsVersion '23.0.2'
     defaultConfig {
         applicationId "com.pluu.pluubasiclibrary"
         minSdkVersion 14
-        targetSdkVersion 22
-        versionCode 7
-        versionName '1.2.0'
+        targetSdkVersion 23
+        versionCode 8
+        versionName '1.3.0'
+
+        buildConfigField "String", "DEPLOY_PHASE", "\"$project.defaultDeployPhase\""
+        buildConfigField "boolean", "SHOW_LOGS", "${project.hasProperty('showLogs') ? showLogs.toBoolean() : true}"
+        buildConfigField "String", "SDK_VERSION", "\"$project.version\""
     }
     buildTypes {
         release {
@@ -20,22 +26,29 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_7
         targetCompatibility JavaVersion.VERSION_1_7
     }
-    productFlavors {
-    }
 
     packagingOptions {
         exclude 'META-INF/DEPENDENCIES'
         exclude 'META-INF/NOTICE'
         exclude 'META-INF/LICENSE'
     }
+
+    useLibrary 'org.apache.http.legacy'
 }
 
 dependencies {
     compile 'com.intellij:annotations:+@jar'
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.google.android.gms:play-services-analytics:7.8.0'
-    compile 'com.android.support:appcompat-v7:22.2.1'
-    compile 'com.android.support:recyclerview-v7:22.2.1'
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile "com.android.support:support-v4:${android_support_lib_version}"
+    compile('com.google.android.gms:play-services-analytics:7.0.0') {
+        exclude module: 'support-v4'
+    }
+    compile("com.android.support:appcompat-v7:${android_support_lib_version}") {
+        exclude module: 'support-v4'
+    }
+    compile("com.android.support:recyclerview-v7:${android_support_lib_version}") {
+        exclude module: 'support-v4'
+    }
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.google.guava:guava:+'
     compile 'org.apache.httpcomponents:httpcore:4.4.1'
