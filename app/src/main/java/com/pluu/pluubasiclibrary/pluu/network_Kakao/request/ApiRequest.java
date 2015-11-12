@@ -15,7 +15,7 @@ import com.pluu.pluubasiclibrary.pluu.network_Kakao.ServerProtocol;
 public abstract class ApiRequest implements IRequest {
 	private final String TAG = ApiRequest.class.getSimpleName();
 
-	static final String POST = "POST";
+	protected static final String POST = "POST";
 	protected static final String GET = "GET";
 	protected static final String DELETE = "DELETE";
 
